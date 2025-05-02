@@ -13,7 +13,7 @@ const Hero = () => {
           AI-powered voice assistance platform for empowering visually impaired bank agents.
         </p>
         <div className="hero-cta">
-          <a href="#about-project" className="cta-button">Learn More</a>
+          <a href="#models" className="cta-button">Learn More</a>
           <a href="https://example.com" className="cta-button secondary" target="_blank" rel="noopener noreferrer">Get Access</a>
         </div>
       </div>

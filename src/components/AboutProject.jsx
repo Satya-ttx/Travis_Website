@@ -54,7 +54,7 @@ const AboutProject = () => {
                 </svg>
               </div>
               <h3>Language Translation</h3>
-              <p>Multi-language support for diverse customer interactions</p>
+              <p>Telugu language support for diverse customer interactions</p>
             </div>
           </div>
         </div>

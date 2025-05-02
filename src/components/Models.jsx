@@ -194,7 +194,7 @@ const Models = () => {
           {activeModel === "translation" && (
             <div className="models-details-card models-translation-details">
               <div className="models-details-header">
-                <h2>Translation Models</h2>
+                <h2>Translation Model</h2>
                 <button 
                   className="models-demo-button"
                   onClick={() => openChat("translation")}
@@ -202,19 +202,19 @@ const Models = () => {
                   Try Demo
                 </button>
               </div>
-              <p>Our advanced translation models provide accurate and contextually relevant translations between English and Telugu.</p>
+              <p>Our advanced translation models provide accurate and contextually relevant translations for Domain Specific (Banking Queries) sentences between English and Telugu.</p>
               <div className="models-features">
                 <div className="models-feature">
                   <h3>Telugu Support</h3>
-                  <p>Specialized in English to Telugu translation with high accuracy</p>
+                  <p>Specialized in English to Telugu translation with high accuracy.</p>
                 </div>
                 <div className="models-feature">
                   <h3>Context Awareness</h3>
-                  <p>Understands context and cultural nuances for more natural translations</p>
+                  <p>Understands context of the responses for more natural translations.</p>
                 </div>
                 <div className="models-feature">
                   <h3>Technical Specialization</h3>
-                  <p>Domain-specific translation for technical, medical, and legal content</p>
+                  <p>Domain-specific translation for Banking related Queries.</p>
                 </div>
               </div>
             </div>
@@ -223,7 +223,7 @@ const Models = () => {
           {activeModel === "response" && (
             <div className="models-details-card models-response-details">
               <div className="models-details-header">
-                <h2>Response Generation Models</h2>
+                <h2>Response Generation Model</h2>
                 <button 
                   className="models-demo-button"
                   onClick={() => openChat("response")}
@@ -231,19 +231,19 @@ const Models = () => {
                   Try Demo
                 </button>
               </div>
-              <p>Our response generation models create human-like responses for various applications including chatbots and virtual assistants.</p>
+              <p>Our intelligent response generation models understand the context of banking-related queries to deliver accurate responses.They provide highly relevant and personalized responses.</p>
               <div className="models-features">
                 <div className="models-feature">
-                  <h3>Conversational AI</h3>
-                  <p>Natural dialogue capabilities with memory of conversation context</p>
+                  <h3>Accurate Responses</h3>
+                  <p>Understands user queries within context to provide precise and meaningful answers.</p>
                 </div>
                 <div className="models-feature">
-                  <h3>Content Creation</h3>
-                  <p>Generates creative content including articles, summaries, and responses</p>
+                  <h3>Intent Recognition</h3>
+                  <p>Understands the purpose behind each query to provide targeted assistance.</p>
                 </div>
                 <div className="models-feature">
-                  <h3>Personalization</h3>
-                  <p>Adapts tone and style based on user preferences and interaction history</p>
+                  <h3>Natural Language Output</h3>
+                  <p>Delivers responses in fluent, easy-to-understand English suitable for users.</p>
                 </div>
               </div>
             </div>

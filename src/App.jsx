@@ -5,12 +5,11 @@ import AgentDashboard from "./components/Agent_Dashboard";
 import Register from "./components/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 import LoginForm from './components/LoginForm';
-
 // Landing Page Components
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AboutProject from './components/AboutProject';
-import AboutUs from './components/AboutUs';
+import AboutUs from './components/About';
 import Documentation from './components/Documentation';
 import Footer from './components/Footer';
 import Models from './components/Models';

@@ -4,22 +4,46 @@ import '../styles/AboutUs.css';
 const AboutUs = () => {
   const team = [
     {
-      name: "Dr. Sarah Chen",
-      role: "AI Research Lead",
-      bio: "PhD in Computer Science with focus on NLP and transformer architecture. Leading the model development and optimization efforts.",
+      name: "R. Vinay",
+      role: "Team Lead",
+      bio: "Model Development",
       avatar: "https://i.pravatar.cc/150?img=32"
     },
     {
-      name: "Alex Rodriguez",
+      name: "Y. Ram",
+      role: "AI Research Lead",
+      bio: "Member",
+      avatar: "https://i.pravatar.cc/150?img=32"
+    },
+    {
+      name: "K. Shalem",
+      role: "AI Research Lead",
+      bio: "Member",
+      avatar: "https://i.pravatar.cc/150?img=32"
+    },
+    {
+      name: "V. Akshitha Reddy",
+      role: "AI Research Lead",
+      bio: "Member",
+      avatar: "https://i.pravatar.cc/150?img=32"
+    },
+    {
+      name: "S. Jasmi Rishitha",
+      role: "AI Research Lead",
+      bio: "Member",
+      avatar: "https://i.pravatar.cc/150?img=32"
+    },
+    {
+      name: "M. Siddu",
       role: "Accessibility Specialist",
-      bio: "Expert in designing accessible technology solutions with 8+ years working with visually impaired users. Ensures our platform meets all accessibility standards.",
+      bio: "Member",
       avatar: "https://i.pravatar.cc/150?img=65"
     },
     {
-      name: "Priya Sharma",
+      name: "S. Satya Sri Hasith",
       role: "Voice Integration Engineer",
-      bio: "Specialized in speech recognition and synthesis technologies. Builds and optimizes the voice assistance components of our platform.",
-      avatar: "https://i.pravatar.cc/150?img=47"
+      bio: "Member",
+      avatar: "https://i.pravatar.cc/150?img=65"
     }
   ];
 
