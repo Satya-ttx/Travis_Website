@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/AgentDashboard.module.css";
-const API_URL = "http://192.168.108.83:5000"
+const API_URL = "https://vinay0123-final-model.hf.space"
 function AgentDashboard() {
   const [messages, setMessages] = useState([
     { text: "Welcome To Travis Input Your Query..!", user: false }

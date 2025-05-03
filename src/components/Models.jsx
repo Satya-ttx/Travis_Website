@@ -13,7 +13,7 @@ const Models = () => {
   const chatMessagesRef = useRef(null);
   
   // Configure the backend API URL - change this to match your Flask server
-  const API_URL = "http://192.168.108.83:5000";
+  const API_URL = "https://vinay0123-final-model.hf.space";
 
   useEffect(() => {
     const handleHashChange = () => {
