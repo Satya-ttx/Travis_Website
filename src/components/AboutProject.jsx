@@ -16,9 +16,12 @@ const AboutProject = () => {
               from scratch that enables visually impaired bank representatives to handle customer queries efficiently.
             </p>
             <p>
-              The system will process input queries, classify them into standardized categories, 
+              The system will process input queries, classify them into standardized categories,
+              and generate appropriate responses. It will also provide voice assistance to help the
+              representative understand the queries and responses. The system will be able to 
               translate responses into local languages, and convert them into speech for the 
               representative to communicate.
+              
             </p>
             <p>
               It focuses on empowering visually impaired bank agent/representative to provide 

@@ -60,17 +60,24 @@ const Footer = () => {
     setError('');
     
     try {
-      // Here you would normally make an API call to your backend
-      // For example using fetch or axios
-      // Example:
-      // await fetch('/api/contact', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify({ email, message, to: 'Travisdrive2@gmail.com' })
-      // });
+      // Using the Flask API endpoint
+      const response = await fetch('http://192.168.108.83:5000/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          email, 
+          message, 
+          to: 'Travisdrive2@gmail.com' 
+        }),
+        // Include credentials if you need to send cookies with the request
+        // credentials: 'include',
+      });
       
-      // Simulating API call with timeout
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
       
       setIsSuccess(true);
       // Clear form after successful submission
@@ -82,7 +89,7 @@ const Footer = () => {
         closeModal();
       }, 2000);
     } catch (err) {
-      setError('Failed to send message. Please try again.');
+      setError(err.message || 'Failed to send message. Please try again.');
     } finally {
       setIsSending(false);
     }

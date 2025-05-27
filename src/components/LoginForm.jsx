@@ -1,95 +1,212 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate } from "react-router-dom";
-import "../styles/LoginForm.css"; // Import your CSS file for styling
-import SecondaryNavbar from './SecondaryNavbar';
-function LoginForm() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [role, setRole] = useState("admin"); // Default role is admin
-    const [active, setActive] = useState(false);
-    const navigate = useNavigate();
+// import React, { useState, useEffect } from "react";
+// import { BrowserRouter as Router, Routes, Route, useNavigate, Navigate } from "react-router-dom";
+// import "../styles/LoginForm.css"; // Import your CSS file for styling
+// import SecondaryNavbar from './SecondaryNavbar';
+// function LoginForm() {
+//     const [email, setEmail] = useState("");
+//     const [password, setPassword] = useState("");
+//     const [role, setRole] = useState("admin"); // Default role is admin
+//     const [active, setActive] = useState(false);
+//     const navigate = useNavigate();
   
-    useEffect(() => {
-      const userData = localStorage.getItem('user');
-      if (userData) {
-        const user = JSON.parse(userData);
-        navigate(user.role === "admin" ? "/admin_dashboard" : "/agent_dashboard");
-      }
-    }, [navigate]);
+//     useEffect(() => {
+//       const userData = localStorage.getItem('user');
+//       if (userData) {
+//         const user = JSON.parse(userData);
+//         navigate(user.role === "admin" ? "/admin_dashboard" : "/agent_dashboard");
+//       }
+//     }, [navigate]);
   
-    const toggleForm = () => {
-      setActive(!active);
-      setRole(active ? "admin" : "agent");
-    };
+//     const toggleForm = () => {
+//       setActive(!active);
+//       setRole(active ? "admin" : "agent");
+//     };
   
-    const handleLogin = async () => {
-      try {
-        const res = await fetch("http://localhost:5000/login", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password, role }),
-        });
+//     const handleLogin = async () => {
+//       try {
+//         const res = await fetch("http://localhost:5000/login", {
+//           method: "POST",
+//           headers: { "Content-Type": "application/json" },
+//           body: JSON.stringify({ email, password, role }),
+//         });
   
-        const data = await res.json();
-        if (data.success) {
-          localStorage.setItem('user', JSON.stringify({
-            email,
-            role: data.role
-          }));
+//         const data = await res.json();
+//         if (data.success) {
+//           localStorage.setItem('user', JSON.stringify({
+//             email,
+//             role: data.role
+//           }));
   
-          navigate(data.role === "admin" ? "/admin_dashboard" : "/agent_dashboard");
-        } else {
-          alert("Invalid credentials");
-        }
-      } catch (error) {
-        console.error("Login error:", error);
-        alert("Login failed");
-      }
-    };
+//           navigate(data.role === "admin" ? "/admin_dashboard" : "/agent_dashboard");
+//         } else {
+//           alert("Invalid credentials");
+//         }
+//       } catch (error) {
+//         console.error("Login error:", error);
+//         alert("Login failed");
+//       }
+//     };
   
-    return (
+//     return (
       
+//     <div className="background-shapes">
+//       <SecondaryNavbar/>
+//       <div className={`container ${active ? "active" : ""}`} id="container">
+//         <div className="form-container sign-up">
+//           <form>
+//             <h1 className="heading">{active ? "Admin Login" : "Agent Login"}</h1>
+//             <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+//             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+//             <button type="button" onClick={handleLogin}>Sign In</button>
+//           </form>
+//         </div>
+  
+//         <div className="form-container sign-in">
+//           <form>
+//             <h1>{active ? "Admin Login" : "Agent Login"}</h1>
+//             <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+//             <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+//             <button type="button" onClick={handleLogin}>Sign In</button>
+//             <p>
+//               Don't Have An Account?
+//               <a href="/register">Register</a>
+//             </p>
+//           </form>
+//         </div>
+  
+//         <div className="toggle-container">
+//           <div className="toggle">
+//             <div className="toggle-panel toggle-left">
+//               <h2>Welcome Back Admin!</h2>
+//               <p>Login with your credentials..!</p>
+//               <button className="hidden" onClick={toggleForm}>Not An Admin?</button>
+//             </div>
+//             <div className="toggle-panel toggle-right">
+//               <h2>Hello, Agent!</h2>
+//               <p>Welcome to Travis ..!</p>
+//               <button className="hidden" onClick={toggleForm}>Not An Agent?</button>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//     );
+//   }
+//   export default LoginForm;
+import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import SecondaryNavbar from './SecondaryNavbar';
+import "../styles/LoginForm.css";
+import { VoiceContext } from "../context/VoiceContext";
+
+function LoginForm() {
+  const { speak, language } = useContext(VoiceContext);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("admin");
+  const [active, setActive] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const userData = localStorage.getItem('user');
+    if (userData) {
+      const user = JSON.parse(userData);
+      navigate(user.role === "admin" ? "/admin_dashboard" : "/agent_dashboard");
+    }
+  }, [navigate]);
+
+  useEffect(() => {
+    const msg = language === 'en-US'
+      ? "You are now on the login page. Enter your credentials and press Tab to move between fields."
+      : "మీరు ఇప్పుడు లాగిన్ పేజీలో ఉన్నారు. మీ వివరాలు నమోదు చేయండి. ఫీల్డ్‌ల మధ్య మారడానికి Tab నొక్కండి.";
+    speak(msg);
+  }, [speak, language]);
+
+  const toggleForm = () => {
+    setActive(!active);
+    setRole(active ? "admin" : "agent");
+  };
+
+  const handleLogin = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password, role }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        localStorage.setItem('user', JSON.stringify({ email, role: data.role }));
+        navigate(data.role === "admin" ? "/admin_dashboard" : "/agent_dashboard");
+      } else {
+        alert("Invalid credentials");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Login failed");
+    }
+  };
+
+  return (
     <div className="background-shapes">
-      <SecondaryNavbar/>
+      <SecondaryNavbar />
       <div className={`container ${active ? "active" : ""}`} id="container">
         <div className="form-container sign-up">
           <form>
             <h1 className="heading">{active ? "Admin Login" : "Agent Login"}</h1>
-            <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
             <button type="button" onClick={handleLogin}>Sign In</button>
           </form>
         </div>
-  
         <div className="form-container sign-in">
           <form>
             <h1>{active ? "Admin Login" : "Agent Login"}</h1>
-            <input type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-            <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
             <button type="button" onClick={handleLogin}>Sign In</button>
             <p>
-              Don't Have An Account?
-              <a href="/register">Register</a>
+              Don't Have An Account? <a href="/register">Register</a>
             </p>
           </form>
         </div>
-  
         <div className="toggle-container">
           <div className="toggle">
             <div className="toggle-panel toggle-left">
               <h2>Welcome Back Admin!</h2>
-              <p>Login with your credentials..!</p>
+              <p>Login with your credentials.</p>
               <button className="hidden" onClick={toggleForm}>Not An Admin?</button>
             </div>
             <div className="toggle-panel toggle-right">
               <h2>Hello, Agent!</h2>
-              <p>Welcome to Travis ..!</p>
+              <p>Welcome to Travis.</p>
               <button className="hidden" onClick={toggleForm}>Not An Agent?</button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    );
-  }
-  export default LoginForm;
+  );
+}
+
+export default LoginForm;

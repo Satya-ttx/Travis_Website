@@ -14,7 +14,7 @@ const Hero = () => {
         </p>
         <div className="hero-cta">
           <a href="#models" className="cta-button">Learn More</a>
-          <a href="https://example.com" className="cta-button secondary" target="_blank" rel="noopener noreferrer">Get Access</a>
+          <a href="/login" className="cta-button secondary" target="_blank" rel="noopener noreferrer">Get Started</a>
         </div>
       </div>
       <div className="hero-illustration">

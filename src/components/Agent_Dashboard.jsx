@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/AgentDashboard.module.css";
-const API_URL = "https://vinay0123-final-model.hf.space"
+// const API_URL = "https://vinay0123-final-model.hf.space"
+const API_URL = "http://192.168.0.176:5000"
 function AgentDashboard() {
   const [messages, setMessages] = useState([
     { text: "Welcome To Travis Input Your Query..!", user: false }
@@ -53,7 +54,7 @@ function AgentDashboard() {
         
         const data = await res.json();
         // const botReply = data.telugu;
-        
+        console.log("Response time server:", data.eng_time,"Translate time server:", data.telugu_time);
         setMessages(prev => [...prev, { text: `English: ${data.english}\n\nTelugu: ${data.telugu}`, user: false }]);
         setLatestTelugu(data.telugu); 
       } catch (err) {

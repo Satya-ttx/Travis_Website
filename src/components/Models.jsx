@@ -13,7 +13,8 @@ const Models = () => {
   const chatMessagesRef = useRef(null);
   
   // Configure the backend API URL - change this to match your Flask server
-  const API_URL = "https://vinay0123-final-model.hf.space";
+  // const API_URL = "https://vinay0123-final-model.hf.space";
+  const API_URL = "http://192.168.0.176:5000";
 
   useEffect(() => {
     const handleHashChange = () => {
@@ -128,7 +129,7 @@ const Models = () => {
         }
       } else {
         // Call response generation API
-        response = await fetch(`${API_URL}/generate`, {
+        response = await fetch(`${API_URL}/en_response`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
